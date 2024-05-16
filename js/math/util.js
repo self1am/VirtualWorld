@@ -22,3 +22,11 @@ function add(p1, p2){
 function subtract(p1, p2){
     return new Point(p1.x - p2.x, p1.y - p2.y);
 }
+
+function getTouchPosition(touch) {
+    const rect = this.canvas.getBoundingClientRect();
+    return new Point(
+      (touch.clientX - rect.left) / this.zoom,
+      (touch.clientY - rect.top) / this.zoom
+    );
+  }
