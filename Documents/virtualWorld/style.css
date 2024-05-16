@@ -1,0 +1,13 @@
+body {
+    background: #000;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+canvas {
+    background-color: #2a5;
+}
