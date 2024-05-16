@@ -5,7 +5,7 @@ class Viewport{
 
         this.zoom = 1;
         this.center = new Point(canvas.width / 2, canvas.height / 2);
-        this.offset = new Point(0,0);
+        this.offset = scale(this.center, -1);
         this.drag = {
             start : new Point(0,0),
             end : new Point(0,0),
@@ -16,12 +16,23 @@ class Viewport{
         this.#addEventListeners();
     }
 
-    getMouse(event) {
-        if (event.touches) {
-          return this.getTouchPosition(event.touches[0]);
-        }
-        return new Point(event.offsetX / this.zoom, event.offsetY / this.zoom);
-      }
+    render(){
+        this.ctx.restore();
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.save();
+        this.ctx.translate(this.center.x, this.center.y);
+        this.ctx.scale(1 / this.zoom, 1 / this.zoom);
+        const offset = this.getOffset(); 
+        this.ctx.translate(offset.x, offset.y);
+    }
+
+    getMouse(event, subtractDragOffset = false){
+        const p = new Point(
+            (event.offsetX - this.center.x) * this.zoom - this.offset.x, 
+            (event.offsetY - this.center.y) * this.zoom - this.offset.y
+        );
+        return subtractDragOffset ? subtract(p, this.drag.offset) : p;
+    }
 
     getOffset(event){
         return add(this.offset, this.drag.offset);

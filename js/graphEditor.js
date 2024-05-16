@@ -14,6 +14,12 @@ class GraphEditor {
         this.#addEventListeners();
     }
 
+    dispose(){
+        this.graph.dispose();
+        this.selected = null;
+        this.hovered = null;
+    }
+
     #addEventListeners(){
         this.canvas.addEventListener("mousedown", this.#handleMouseDown.bind(this));
         this.canvas.addEventListener("mousemove", this.#handleMouseMove.bind(this));
@@ -22,7 +28,7 @@ class GraphEditor {
     }
 
     #handleMouseMove(event){
-        this.mouse = this.viewport.getMouse(event);
+        this.mouse = this.viewport.getMouse(event, true);
         this.hovered = getNearestPoint(this.mouse, this.graph.points);
         if(this.dragging){
             this.selected.x = this.mouse.x;
