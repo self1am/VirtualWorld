@@ -3,6 +3,10 @@ body {
     text-align: center;
 }
 
+::selection{
+    background-color: #dd2c2c;
+}
+
 h1 {
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
