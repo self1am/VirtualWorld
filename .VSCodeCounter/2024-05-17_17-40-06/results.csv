@@ -1,0 +1,16 @@
+"filename", "language", "CSS", "JavaScript", "HTML", "comment", "blank", "total"
+"/Users/hanafemira/Documents/virtualWorld/index.html", "HTML", 0, 0, 108, 5, 29, 142
+"/Users/hanafemira/Documents/virtualWorld/js/graphEditor.js", "JavaScript", 0, 76, 0, 0, 10, 86
+"/Users/hanafemira/Documents/virtualWorld/js/math/graph.js", "JavaScript", 0, 71, 0, 0, 14, 85
+"/Users/hanafemira/Documents/virtualWorld/js/math/util.js", "JavaScript", 0, 67, 0, 0, 13, 80
+"/Users/hanafemira/Documents/virtualWorld/js/primitives/envelope.js", "JavaScript", 0, 26, 0, 0, 6, 32
+"/Users/hanafemira/Documents/virtualWorld/js/primitives/point.js", "JavaScript", 0, 29, 0, 0, 4, 33
+"/Users/hanafemira/Documents/virtualWorld/js/primitives/polygon.js", "JavaScript", 0, 98, 0, 4, 11, 113
+"/Users/hanafemira/Documents/virtualWorld/js/primitives/segment.js", "JavaScript", 0, 22, 0, 0, 3, 25
+"/Users/hanafemira/Documents/virtualWorld/js/viewport.js", "JavaScript", 0, 119, 0, 8, 23, 150
+"/Users/hanafemira/Documents/virtualWorld/js/world.js", "JavaScript", 0, 28, 0, 0, 7, 35
+"/Users/hanafemira/Documents/virtualWorld/style.css", "CSS", 27, 0, 0, 0, 5, 32
+"/Users/hanafemira/Documents/virtualWorld/temp.css", "CSS", 62, 0, 0, 4, 11, 77
+"/Users/hanafemira/Documents/virtualWorld/temp.html", "HTML", 0, 0, 22, 1, 2, 25
+"/Users/hanafemira/Documents/virtualWorld/temp.js", "JavaScript", 0, 60, 0, 7, 17, 84
+"Total", "-", 89, 596, 130, 29, 155, 999

@@ -1,0 +1,45 @@
+Date : 2024-05-17 17:40:06
+Directory : /Users/hanafemira/Documents/virtualWorld
+Total : 14 files,  815 codes, 29 comments, 155 blanks, all 999 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         10 |        596 |         19 |        108 |        723 |
+| HTML       |          2 |        130 |          6 |         31 |        167 |
+| CSS        |          2 |         89 |          4 |         16 |        109 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                  |         14 |        815 |         29 |        155 |        999 |
+| . (Files)                                                          |          5 |        279 |         17 |         64 |        360 |
+| js                                                                 |          9 |        536 |         12 |         91 |        639 |
+| js (Files)                                                         |          3 |        223 |          8 |         40 |        271 |
+| js/math                                                            |          2 |        138 |          0 |         27 |        165 |
+| js/primitives                                                      |          4 |        175 |          4 |         24 |        203 |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                           | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/hanafemira/Documents/virtualWorld/index.html                | HTML       |        108 |          5 |         29 |        142 |
+| /Users/hanafemira/Documents/virtualWorld/js/graphEditor.js         | JavaScript |         76 |          0 |         10 |         86 |
+| /Users/hanafemira/Documents/virtualWorld/js/math/graph.js          | JavaScript |         71 |          0 |         14 |         85 |
+| /Users/hanafemira/Documents/virtualWorld/js/math/util.js           | JavaScript |         67 |          0 |         13 |         80 |
+| /Users/hanafemira/Documents/virtualWorld/js/primitives/envelope.js | JavaScript |         26 |          0 |          6 |         32 |
+| /Users/hanafemira/Documents/virtualWorld/js/primitives/point.js    | JavaScript |         29 |          0 |          4 |         33 |
+| /Users/hanafemira/Documents/virtualWorld/js/primitives/polygon.js  | JavaScript |         98 |          4 |         11 |        113 |
+| /Users/hanafemira/Documents/virtualWorld/js/primitives/segment.js  | JavaScript |         22 |          0 |          3 |         25 |
+| /Users/hanafemira/Documents/virtualWorld/js/viewport.js            | JavaScript |        119 |          8 |         23 |        150 |
+| /Users/hanafemira/Documents/virtualWorld/js/world.js               | JavaScript |         28 |          0 |          7 |         35 |
+| /Users/hanafemira/Documents/virtualWorld/style.css                 | CSS        |         27 |          0 |          5 |         32 |
+| /Users/hanafemira/Documents/virtualWorld/temp.css                  | CSS        |         62 |          4 |         11 |         77 |
+| /Users/hanafemira/Documents/virtualWorld/temp.html                 | HTML       |         22 |          1 |          2 |         25 |
+| /Users/hanafemira/Documents/virtualWorld/temp.js                   | JavaScript |         60 |          7 |         17 |         84 |
+| Total                                                              |            |        815 |         29 |        155 |        999 |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+

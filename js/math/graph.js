@@ -10,10 +10,13 @@ class Graph {
             points.find((p) => p.equals(i.p1)),
             points.find((p) => p.equals(i.p2))
         ));
-        
+
         return new Graph(points, segments);
     }
 
+    hash(){
+        return JSON.stringify(this);
+    }
     addPoint(point){
         this.points.push(point);
     }

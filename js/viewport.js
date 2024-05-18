@@ -84,10 +84,39 @@ class Viewport {
     }
 
     #handleMouseWheel(event) {
+        // const dir = Math.sign(event.deltaY);
+        // const step = 0.1;
+        // this.zoom += dir * step;
+        // this.zoom = Math.max(1, Math.min(5, this.zoom));
+        // uncomment for required base functionality
+
+        event.preventDefault(); // Prevent default browser behavior
+
+        // comment this portion to set to base functionality
+        // Check if the shift key is pressed (indicating scroll)
+        if (event.shiftKey) {
+            this.#handleScroll(event);
+        } else {
+            this.#handleZoom(event);
+        }
+
+    }
+
+    #handleZoom(event) {
         const dir = Math.sign(event.deltaY);
         const step = 0.1;
         this.zoom += dir * step;
         this.zoom = Math.max(1, Math.min(5, this.zoom));
+    }
+    
+    #handleScroll(event) {
+        const deltaX = event.deltaX;
+        const deltaY = event.deltaY;
+    
+        const moveStep = 1; // Adjust this value to control scroll speed
+    
+        this.offset.x += deltaX * moveStep * this.zoom;
+        this.offset.y += deltaY * moveStep * this.zoom;
     }
 
     // for touch screens
