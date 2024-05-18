@@ -25,8 +25,10 @@ button {
     border-radius: 5px;
     transition: backround 0.5s ease;
     border: none;
+    text-shadow: 1px 1px black;
 }
 
 button:hover {
     background: #f8f7f6b8;
+    cursor: pointer;
 }

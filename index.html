@@ -18,11 +18,21 @@
         <button onclick="removeAll()">Remove All</button> -->
         <button onclick="dispose()">🗑️</button>
         <button onclick="save()">💾</button>
+        &nbsp;
+        <button id="graphBtn" onclick="setMode('graph')">🌐</button>
+        <button id="stopBtn" onclick="setMode('stop')">🛑</button>
+        <button id="crossingBtn" onclick="setMode('crossing')">🚶🏻</button>
     </div>
 
     <script src="js/world.js"></script>
-    <script src="js/graphEditor.js"></script>
     <script src="js/viewport.js"></script>
+    <script src="js/markings/marking.js"></script>
+    <script src="js/markings/stop.js"></script>
+    <script src="js/markings/crossing.js"></script>
+    <script src="js/editors/markingEditor.js"></script>
+    <script src="js/editors/graphEditor.js"></script>
+    <script src="js/editors/crossingEditor.js"></script>
+    <script src="js/editors/stopEditor.js"></script>
     <script src="js/items/tree.js"></script>
     <script src="js/items/building.js"></script>
     <script src="js/math/util.js"></script>
@@ -117,8 +127,18 @@
         const world = new World(graph);
         const viewport = new Viewport(myCanvas);
         const graphEditor = new GraphEditor(viewport, graph);
+        const stopEditor = new StopEditor(viewport, world);
+        const crossingEditor = new CrossingEditor(viewport, world);
+
+        const tools = {
+            graph : {button : graphBtn, editor : graphEditor},
+            stop : {button : stopBtn, editor : stopEditor},
+            crossing : {button : crossingBtn, editor : crossingEditor}
+        };
 
         let oldGraphHash = graph.hash();
+
+        setMode("graph");
         
         animate();
 
@@ -131,19 +151,58 @@
             const viewPoint = scale(viewport.getOffset(), -1);
             world.draw(ctx, viewPoint);
             ctx.globalAlpha = 0.2;
-            graphEditor.display();
-            // new Polygon(graph.points).draw(ctx);
-            // new Envelope(graph.segments[0], 200, 20).draw(ctx);
+            for(const tool of Object.values(tools)){
+                tool.editor.display();
+            }
             requestAnimationFrame(animate);
         }
 
 
         function dispose(){
             graphEditor.dispose();
+            world.markings.length = 0;
         }
 
         function save(){
             localStorage.setItem("graph", JSON.stringify(graph));
+        }
+
+        function setMode(mode){
+            disableEditors();
+            switch(mode){
+                case "graph":
+                    graphBtn.style.backgroundColor = "white";
+                    graphBtn.style.filter = "";
+                    graphEditor.enable();
+                    break;
+                case "stop":
+                    stopBtn.style.backgroundColor = "white";
+                    stopBtn.style.filter = "";
+                    stopEditor.enable();
+                    break;
+                case "crossing":
+                    crossingBtn.style.backgroundColor = "white";
+                    crossingBtn.style.filter = "";
+                    crossingEditor.enable();
+                    break;
+            }
+        }
+
+        function disableEditors(){
+            for(const tool of Object.values(tools)){
+                graphBtn.style.backgroundColor = "gray";
+                graphBtn.style.filter = "grayscale(100%)";
+                tool.editor.display();
+            }
+            graphBtn.style.backgroundColor = "gray";
+            graphBtn.style.filter = "grayscale(100%)";
+            graphEditor.disable();
+            stopBtn.style.backgroundColor = "gray";
+            stopBtn.style.filter = "grayscale(100%)";
+            stopEditor.disable();
+            crossingBtn.style.backgroundColor = "gray";
+            crossingBtn.style.filter = "grayscale(100%)";
+            crossingEditor.disable();
         }
 
     </script>
