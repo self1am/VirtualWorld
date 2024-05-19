@@ -16,7 +16,8 @@ canvas {
     background-color: #2a5;
 }
 
-button {
+button, .file-input-label {
+    display: inline-block;
     background: #f8f7f6;
     color: #fff;
     font-size: 24px;
@@ -26,6 +27,10 @@ button {
     transition: backround 0.5s ease;
     border: none;
     text-shadow: 1px 1px black;
+}
+
+input[type="file"]{
+    display: none;
 }
 
 button:hover {

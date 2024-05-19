@@ -5,6 +5,10 @@ class Building {
         this.heightCoef = heightCoef;
     }
 
+    static load(info){
+        return new Building(Polygon.load(info.base), info.heightCoef);
+    }
+
     draw(ctx, viewPoint){
         const topPoints = this.base.points.map((p) => add(p, scale(subtract(p, viewPoint), this.heightCoef)));
         const ceiling = new Polygon(topPoints);

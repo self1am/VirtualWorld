@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center of Mass Simulation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <label for="mass1">Mass 1:</label>
+    <input type="number" id="mass1" value="10">
+    <label for="mass2">Mass 2:</label>
+    <input type="number" id="mass2" value="5">
+    <label for="sideLength">Side Length of Prism:</label>
+    <input type="number" id="sideLength" value="100">
+    <button onclick="simulate()">Simulate</button>
+    <canvas id="canvas" width="500" height="300"></canvas>
+
+    <script>
+        function simulate() {
+            // Get user inputs
+            const mass1 = parseFloat(document.getElementById("mass1").value);
+            const mass2 = parseFloat(document.getElementById("mass2").value);
+            const sideLength = parseFloat(document.getElementById("sideLength").value);
+
+            // Calculate positions of masses
+            const totalMass = mass1 + mass2;
+            const centerOfMass = (mass1 * (sideLength / 3) + mass2 * (2 * sideLength / 3)) / totalMass;
+            const xPos1 = centerOfMass - sideLength / 3;
+            const xPos2 = centerOfMass + sideLength / 3;
+
+            // Get canvas context
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw right-angled triangular prism
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2 - sideLength / 2, canvas.height / 2 + sideLength / 2);
+            ctx.lineTo(canvas.width / 2 + sideLength / 2, canvas.height / 2 + sideLength / 2);
+            ctx.lineTo(canvas.width / 2 - sideLength / 2, canvas.height / 2 - sideLength / 2);
+            ctx.closePath();
+            ctx.stroke();
+
+            // Draw block on top
+            const blockSize = 20;
+            ctx.fillRect(canvas.width / 2 - blockSize / 2, canvas.height / 2 - sideLength / 2 - blockSize, blockSize, blockSize);
+
+            // Draw masses
+            ctx.fillStyle = "blue";
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2 + xPos1, canvas.height / 2, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2 + xPos2, canvas.height / 2, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    </script>
+</body>
+</html>
