@@ -1,39 +1,31 @@
-body {
-    background: #000;
-    text-align: center;
+body{
+    margin:0;
+    background:darkgray;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-::selection{
-    background-color: #dd2c2c;
+#verticalButtons{
+    display:flex;
+    flex-direction:column;
 }
 
-h1 {
-    color: #fff;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-canvas {
-    background-color: #2a5;
-}
-
-button, .file-input-label {
-    display: inline-block;
-    background: #f8f7f6;
-    color: #fff;
-    font-size: 24px;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: backround 0.5s ease;
+button{
     border: none;
-    text-shadow: 1px 1px black;
+    border-radius: 5px;
+    padding: 5px 5px 7px 5px;
+    margin: 2px;
+    cursor:pointer;
+}
+button:hover{
+    background:blue;
 }
 
-input[type="file"]{
-    display: none;
+#networkCanvas{
+    background:black;
 }
-
-button:hover {
-    background: #f8f7f6b8;
-    cursor: pointer;
+#carCanvas{
+    background:#2a5;
 }
