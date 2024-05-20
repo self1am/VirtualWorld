@@ -31,7 +31,7 @@ if(localStorage.getItem("bestBrain")){
 }
 
 const traffic=[];
-const roadBorders = [];
+const roadBorders = world.roadBorders.map((s) => [s.p1, s.p2]);
 
 animate();
 
@@ -65,8 +65,8 @@ function animate(time){
         cars[i].update(roadBorders,traffic);
     }
     bestCar=cars.find(
-        c=>c.y==Math.min(
-            ...cars.map(c=>c.y)
+        c=>c.fitness==Math.max(
+            ...cars.map(c=>c.fitness)
         ));
 
     world.cars = cars;
