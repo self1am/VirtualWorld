@@ -79,12 +79,14 @@ function animate(time){
     world.cars = cars;
     world.bestCar = bestCar;
 
+    viewport.angle = bestCar.angle;
     viewport.offset.x = -bestCar.x;
     viewport.offset.y = -bestCar.y;
 
     viewport.render();
     const viewPoint = scale(viewport.getOffset(), -1);
     world.draw(carCtx, viewPoint, false);
+    miniMap.angle = bestCar.angle;
     miniMap.update(viewPoint);
 
     for(let i=0;i<traffic.length;i++){

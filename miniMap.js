@@ -3,6 +3,7 @@ class MiniMap{
         this.canvas = canvas;
         this.graph = graph;
         this.size = size;
+        this.angle = 0;
 
         canvas.width = size;
         canvas.height = size;
@@ -24,6 +25,7 @@ class MiniMap{
         for(const seg of this.graph.segments){
             seg.draw(this.ctx, { width : 3 / scaler, color : "white"});
         }
+
         this.ctx.restore();
 
         new Point(this.size / 2, this.size / 2).draw(this.ctx, {color: "blue", outline: true});

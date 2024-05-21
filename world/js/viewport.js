@@ -1,6 +1,7 @@
 class Viewport {
     constructor(canvas) {
         this.canvas = canvas;
+        this.angle = 0;
         this.ctx = canvas.getContext("2d");
 
         this.zoom = 1;
@@ -21,6 +22,7 @@ class Viewport {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.save();
         this.ctx.translate(this.center.x, this.center.y);
+        this.ctx.rotate(this.angle);
         this.ctx.scale(1 / this.zoom, 1 / this.zoom);
         const offset = this.getOffset();
         this.ctx.translate(offset.x, offset.y);
