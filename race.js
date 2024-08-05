@@ -1,17 +1,13 @@
 const carCanvas=document.getElementById("carCanvas");
-carCanvas.width= window.innerWidth - 330;
-const networkCanvas=document.getElementById("networkCanvas");
-networkCanvas.width=300;
+carCanvas.width= window.innerWidth;
+carCanvas.height=window.innerHeight;
 const miniMapCanvas=document.getElementById("miniMapCanvas");
 miniMapCanvas.width=300;
 miniMapCanvas.height=300;
 let manual = false;
 
-carCanvas.height=window.innerHeight;
-networkCanvas.height=window.innerHeight - 300;
 
 const carCtx = carCanvas.getContext("2d");
-const networkCtx = networkCanvas.getContext("2d");
 
 
 // const worldString = localStorage.getItem("world");
@@ -26,9 +22,9 @@ const miniMap = new MiniMap(miniMapCanvas, world.graph, 300);
 
 
 
-let N=1;
-const cars=generateCars(N);
-let bestCar=cars[0];
+let N=100;
+const cars=generateCars(1, "KEYS").concat(generateCars(N, "AI"));
+const myCar=cars[0];
 if(localStorage.getItem("bestBrain")){
     for(let i=0;i<cars.length;i++){
         cars[i].brain=JSON.parse(
@@ -39,7 +35,7 @@ if(localStorage.getItem("bestBrain")){
     }
 }
 
-const traffic=[];
+// const traffic=[]; racing world does not need traffic right now
 const roadBorders = world.roadBorders.map((s) => [s.p1, s.p2]);
 
 animate();
@@ -54,7 +50,7 @@ function discard(){
 }
 
 
-function generateCars(N){
+function generateCars(N, type){
     const startPoints = world.markings.filter((m) => m instanceof Start);
     const startPoint = startPoints.length > 0 ? startPoints[0].center : new Point(100,100);
     const dir = startPoints.length > 0 ? startPoints[0].directionVector : new Point(100,100);
@@ -62,7 +58,17 @@ function generateCars(N){
 
     const cars=[];
     for(let i=1;i<=N;i++){
-        cars.push(new Car(startPoint.x,startPoint.y,30,50,"AI", startAngle));
+        const color = type == "AI" ? getRandomColor() : "blue";
+        cars.push(new Car(
+            startPoint.x,
+            startPoint.y,
+            30,
+            50,
+            type,
+            startAngle,
+            8,
+            color
+        ));
     }
     //     document.getElementById('keys').addEventListener('click', function(){
     //         if(manual){
@@ -98,17 +104,11 @@ function generateCars(N){
     return cars;
 }
 
-function animate(time){
-    for(let i=0;i<traffic.length;i++){
-        traffic[i].update(roadBorders,[]);
-    }
+function animate(){
+    
     for(let i=0;i<cars.length;i++){
-        cars[i].update(roadBorders,traffic);
+        cars[i].update(roadBorders,[]);
     }
-    myCar=cars.find(
-        c=>c.fitness==Math.max(
-            ...cars.map(c=>c.fitness)
-        ));
 
     world.cars = cars;
     world.bestCar = myCar;
@@ -129,12 +129,9 @@ function animate(time){
     miniMap.angle = myCar.angle;
     miniMap.update(viewPoint);
 
-    for(let i=0;i<traffic.length;i++){
-        traffic[i].draw(carCtx);
-    }
+    // for(let i=0;i<traffic.length;i++){
+    //     traffic[i].draw(carCtx);
+    // }
 
-    networkCtx.lineDashOffset=-time/50;
-    networkCtx.clearRect(0, 0, networkCanvas.width, networkCanvas.height);
-    Visualizer.drawNetwork(networkCtx,myCar.brain);
     requestAnimationFrame(animate);
 }

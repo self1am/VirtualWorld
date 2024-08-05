@@ -6,19 +6,7 @@
 </head>
 <body>
     <canvas id="carCanvas"></canvas>
-    <div id="verticalButtons">
-        <button onclick="save()">💾</button>
-        <button onclick="discard()">🗑️</button>
-        <button onclick="window.location.href='world'">🌐</button>
-        <button id="keys">🎮</button>
-        <button id="viewportangle">👁️</button>
-        <!-- a button to reload the game -->
-        <button onclick="window.location.reload()">🔄</button>
-    </div>
-    <div>
-        <canvas id="networkCanvas"></canvas>
-        <canvas id="miniMapCanvas"></canvas>
-    </div>
+    <canvas id="miniMapCanvas" class="miniMap"></canvas>
     
 
     <script src="world/js/viewport.js"></script>
@@ -50,6 +38,6 @@
     <script src="utils.js"></script>
     <script src="controls.js"></script>
     <script src="car.js"></script>
-    <script src="main.js"></script>
+    <script src="race.js"></script>
 </body>
 </html>
