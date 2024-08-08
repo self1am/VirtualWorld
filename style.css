@@ -35,6 +35,12 @@ button:hover{
 #miniMapCanvas{
     background:black;
     border-radius: 50%;
+    transition: transform ease 0.3s;
+}
+/* on hover miniMapCanvas increases slightly in size */
+#miniMapCanvas:hover{
+    transform: scale(1.05);
+    transition: transform ease 0.3s;
 }
 #carCanvas{
     background:#2a5;
@@ -45,4 +51,22 @@ button:hover{
     right: 20px;
     bottom: 20px; 
     opacity: 70%;
+}
+
+#reloadButton{
+    position: absolute;
+    display: grid;
+    right: 50%;
+    bottom: 20px;
+    opacity: 60%;
+    background-color: black;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+/* hovered reloadButton */
+#reloadButton:hover{
+    background-color: red;
+    opacity: 100%;
+
 }

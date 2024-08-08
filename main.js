@@ -14,10 +14,10 @@ const carCtx = carCanvas.getContext("2d");
 const networkCtx = networkCanvas.getContext("2d");
 
 
-// const worldString = localStorage.getItem("world");
-// const worldInfo = worldString ? JSON.parse(worldString) : null;
-// const world = worldInfo ? World.load(worldInfo) : new World(new Graph());
-// const graph = world.graph;
+const worldString = localStorage.getItem("world");
+const worldInfo = worldString ? JSON.parse(worldString) : null;
+const world = worldInfo ? World.load(worldInfo) : new World(new Graph());
+const graph = world.graph;
 
 
 
@@ -26,7 +26,7 @@ const miniMap = new MiniMap(miniMapCanvas, world.graph, 300);
 
 
 
-let N=1;
+let N=100;
 const cars=generateCars(N);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -62,7 +62,7 @@ function generateCars(N){
 
     const cars=[];
     for(let i=1;i<=N;i++){
-        cars.push(new Car(startPoint.x,startPoint.y,30,50,"AI", startAngle));
+        cars.push(new Car(startPoint.x,startPoint.y,30,50,"AI", startAngle, 4.6));
     }
     //     document.getElementById('keys').addEventListener('click', function(){
     //         if(manual){
