@@ -4,6 +4,7 @@ class Controls{
         this.left=false;
         this.right=false;
         this.reverse=false;
+        this.boost=false;
 
         switch(type){
             case "KEYS":
@@ -38,6 +39,10 @@ class Controls{
                 case "s":
                     this.reverse = true;
                     break;
+                case "ShiftKey" + "ArrowUp":
+                    this.boost = true;
+                    break;
+                // once shift is pressed the control boosts
             }
         };
         
@@ -62,6 +67,9 @@ class Controls{
                 case "S":
                 case "s":
                     this.reverse = false;
+                    break;
+                case "ShiftKey" + "ArrowUp":
+                    this.boost = false;
                     break;
             }
         };

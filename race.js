@@ -23,7 +23,7 @@ const miniMap = new MiniMap(miniMapCanvas, world.graph, 300);
 
 
 let N=100;
-const cars=generateCars(1, "KEYS").concat(generateCars(N, "AI"));
+const cars=generateCars(1, "KEYS", 4).concat(generateCars(N, "AI", 3));
 const myCar=cars[0];
 if(localStorage.getItem("bestBrain")){
     for(let i=0;i<cars.length;i++){
@@ -50,7 +50,7 @@ function discard(){
 }
 
 
-function generateCars(N, type){
+function generateCars(N, type, speed){
     const startPoints = world.markings.filter((m) => m instanceof Start);
     const startPoint = startPoints.length > 0 ? startPoints[0].center : new Point(100,100);
     const dir = startPoints.length > 0 ? startPoints[0].directionVector : new Point(100,100);
@@ -66,7 +66,7 @@ function generateCars(N, type){
             50,
             type,
             startAngle,
-            8,
+            speed,
             color
         ));
     }
